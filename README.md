@@ -14,6 +14,7 @@ These skills help AI assistants understand:
 - Developer experience: HMR, dev servers, error overlays, and modern tooling
 - Mutation UX patterns such as optimistic updates, rollback, and reconciliation
 - Cache invalidation, freshness windows, and revalidation strategies
+- Accessible interaction design including focus, keyboard flow, and announcements
 - How meta-frameworks solve common problems
 - Hydration, routing, and other core concepts
 
@@ -29,6 +30,7 @@ Rather than framework-specific instructions, these skills provide the **conceptu
 | [hydration-patterns](./hydration-patterns/SKILL.md) | Hydration, islands architecture, resumability |
 | [meta-frameworks-overview](./meta-frameworks-overview/SKILL.md) | Next.js, Nuxt, SvelteKit, Astro, Remix, Qwik |
 | [routing-patterns](./routing-patterns/SKILL.md) | Client vs server routing, file-based routing |
+| [accessibility-interaction-patterns](./accessibility-interaction-patterns/SKILL.md) | Keyboard access, focus management, ARIA, async feedback |
 | [state-management-patterns](./state-management-patterns/SKILL.md) | Client state, server state, URL state, caching |
 | [data-fetching-patterns](./data-fetching-patterns/SKILL.md) | Fetch patterns, caching, loading states |
 | [caching-invalidation-patterns](./caching-invalidation-patterns/SKILL.md) | Cache keys, stale data, revalidation, mutation invalidation |
@@ -55,21 +57,23 @@ For best understanding, read the skills in this order:
         ↓
 6. routing-patterns             (How navigation works)
         ↓
-7. data-fetching-patterns       (How to load data)
+7. accessibility-interaction-patterns (Keyboard, focus, announcements)
         ↓
-8. caching-invalidation-patterns (Freshness, staleness, revalidation)
+8. data-fetching-patterns       (How to load data)
         ↓
-9. state-management-patterns    (Where to store data)
+9. caching-invalidation-patterns (Freshness, staleness, revalidation)
         ↓
-10. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
+10. state-management-patterns   (Where to store data)
         ↓
-11. seo-fundamentals            (Search engine optimization)
+11. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
         ↓
-12. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
+12. seo-fundamentals            (Search engine optimization)
         ↓
-13. middleware-patterns         (Request/response pipelines, auth, CORS)
+13. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
         ↓
-14. meta-frameworks-overview    (How frameworks implement all of the above)
+14. middleware-patterns         (Request/response pipelines, auth, CORS)
+        ↓
+15. meta-frameworks-overview    (How frameworks implement all of the above)
 ```
 
 ## Installation
@@ -109,6 +113,7 @@ Once installed, Cursor will automatically suggest these skills when relevant top
 
 - Asking "Should I use SSR or SSG?" will trigger rendering-patterns
 - Asking "How do SPAs handle routing?" will trigger web-app-architectures and routing-patterns
+- Asking "How do I make this dropdown, modal, or form interaction accessible?" will trigger accessibility-interaction-patterns
 - Asking "How do I improve SEO for my React app?" will trigger seo-fundamentals
 - Asking "How should I invalidate cache after mutations or avoid stale query data?" will trigger caching-invalidation-patterns
 - Asking "How should I build optimistic updates for likes, comments, or reordering?" will trigger optimistic-ui-patterns
