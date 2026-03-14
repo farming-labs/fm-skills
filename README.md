@@ -13,6 +13,7 @@ These skills help AI assistants understand:
 - Middleware patterns for request/response processing (auth, CORS, rate limiting)
 - Developer experience: HMR, dev servers, error overlays, and modern tooling
 - Mutation UX patterns such as optimistic updates, rollback, and reconciliation
+- Cache invalidation, freshness windows, and revalidation strategies
 - How meta-frameworks solve common problems
 - Hydration, routing, and other core concepts
 
@@ -30,6 +31,7 @@ Rather than framework-specific instructions, these skills provide the **conceptu
 | [routing-patterns](./routing-patterns/SKILL.md) | Client vs server routing, file-based routing |
 | [state-management-patterns](./state-management-patterns/SKILL.md) | Client state, server state, URL state, caching |
 | [data-fetching-patterns](./data-fetching-patterns/SKILL.md) | Fetch patterns, caching, loading states |
+| [caching-invalidation-patterns](./caching-invalidation-patterns/SKILL.md) | Cache keys, stale data, revalidation, mutation invalidation |
 | [optimistic-ui-patterns](./optimistic-ui-patterns/SKILL.md) | Optimistic mutations, rollback, temp IDs, reconciliation |
 | [build-pipelines-bundling](./build-pipelines-bundling/SKILL.md) | Bundling, code splitting, tree shaking, build optimization |
 | [universal-javascript-runtimes](./universal-javascript-runtimes/SKILL.md) | Nitro, H3, unenv, web standards, cross-platform deployment |
@@ -55,17 +57,19 @@ For best understanding, read the skills in this order:
         ↓
 7. data-fetching-patterns       (How to load data)
         ↓
-8. state-management-patterns    (Where to store data)
+8. caching-invalidation-patterns (Freshness, staleness, revalidation)
         ↓
-9. optimistic-ui-patterns       (Mutations, rollback, reconciliation)
+9. state-management-patterns    (Where to store data)
         ↓
-10. seo-fundamentals            (Search engine optimization)
+10. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
         ↓
-11. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
+11. seo-fundamentals            (Search engine optimization)
         ↓
-12. middleware-patterns         (Request/response pipelines, auth, CORS)
+12. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
         ↓
-13. meta-frameworks-overview     (How frameworks implement all of the above)
+13. middleware-patterns         (Request/response pipelines, auth, CORS)
+        ↓
+14. meta-frameworks-overview    (How frameworks implement all of the above)
 ```
 
 ## Installation
@@ -106,6 +110,7 @@ Once installed, Cursor will automatically suggest these skills when relevant top
 - Asking "Should I use SSR or SSG?" will trigger rendering-patterns
 - Asking "How do SPAs handle routing?" will trigger web-app-architectures and routing-patterns
 - Asking "How do I improve SEO for my React app?" will trigger seo-fundamentals
+- Asking "How should I invalidate cache after mutations or avoid stale query data?" will trigger caching-invalidation-patterns
 - Asking "How should I build optimistic updates for likes, comments, or reordering?" will trigger optimistic-ui-patterns
 
 ## Skill Structure
