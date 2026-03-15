@@ -1,0 +1,4 @@
+interface:
+  display_name: "Realtime Patterns"
+  short_description: "Polling, SSE, WebSockets, sync"
+  default_prompt: "Use $realtime-patterns to choose and implement a realtime update strategy for this feature."
