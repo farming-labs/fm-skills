@@ -15,6 +15,7 @@ These skills help AI assistants understand:
 - Mutation UX patterns such as optimistic updates, rollback, and reconciliation
 - Cache invalidation, freshness windows, and revalidation strategies
 - Accessible interaction design including focus, keyboard flow, and announcements
+- Testing strategy across unit, integration, E2E, accessibility, and performance layers
 - Realtime delivery models such as polling, SSE, and WebSockets
 - How meta-frameworks solve common problems
 - Hydration, routing, and other core concepts
@@ -32,6 +33,7 @@ Rather than framework-specific instructions, these skills provide the **conceptu
 | [meta-frameworks-overview](./meta-frameworks-overview/SKILL.md) | Next.js, Nuxt, SvelteKit, Astro, Remix, Qwik |
 | [routing-patterns](./routing-patterns/SKILL.md) | Client vs server routing, file-based routing |
 | [accessibility-interaction-patterns](./accessibility-interaction-patterns/SKILL.md) | Keyboard access, focus management, ARIA, async feedback |
+| [testing-strategies-patterns](./testing-strategies-patterns/SKILL.md) | Unit, integration, E2E, accessibility, visual, and CI testing |
 | [state-management-patterns](./state-management-patterns/SKILL.md) | Client state, server state, URL state, caching |
 | [data-fetching-patterns](./data-fetching-patterns/SKILL.md) | Fetch patterns, caching, loading states |
 | [caching-invalidation-patterns](./caching-invalidation-patterns/SKILL.md) | Cache keys, stale data, revalidation, mutation invalidation |
@@ -61,23 +63,25 @@ For best understanding, read the skills in this order:
         ↓
 7. accessibility-interaction-patterns (Keyboard, focus, announcements)
         ↓
-8. data-fetching-patterns       (How to load data)
+8. testing-strategies-patterns  (How to build confidence and quality gates)
         ↓
-9. caching-invalidation-patterns (Freshness, staleness, revalidation)
+9. data-fetching-patterns       (How to load data)
         ↓
-10. state-management-patterns   (Where to store data)
+10. caching-invalidation-patterns (Freshness, staleness, revalidation)
         ↓
-11. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
+11. state-management-patterns   (Where to store data)
         ↓
-12. realtime-patterns           (Live delivery, sync, presence)
+12. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
         ↓
-13. seo-fundamentals            (Search engine optimization)
+13. realtime-patterns           (Live delivery, sync, presence)
         ↓
-14. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
+14. seo-fundamentals            (Search engine optimization)
         ↓
-15. middleware-patterns         (Request/response pipelines, auth, CORS)
+15. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
         ↓
-16. meta-frameworks-overview    (How frameworks implement all of the above)
+16. middleware-patterns         (Request/response pipelines, auth, CORS)
+        ↓
+17. meta-frameworks-overview    (How frameworks implement all of the above)
 ```
 
 ## Installation
@@ -118,6 +122,7 @@ Once installed, Cursor will automatically suggest these skills when relevant top
 - Asking "Should I use SSR or SSG?" will trigger rendering-patterns
 - Asking "How do SPAs handle routing?" will trigger web-app-architectures and routing-patterns
 - Asking "How do I make this dropdown, modal, or form interaction accessible?" will trigger accessibility-interaction-patterns
+- Asking "What should I test with Vitest, Playwright, or Testing Library?" will trigger testing-strategies-patterns
 - Asking "Should this update use polling, SSE, or WebSockets?" will trigger realtime-patterns
 - Asking "How do I improve SEO for my React app?" will trigger seo-fundamentals
 - Asking "How should I invalidate cache after mutations or avoid stale query data?" will trigger caching-invalidation-patterns

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Testing Strategies"
+  short_description: "Unit, integration, E2E, modern tooling"
+  default_prompt: "Use $testing-strategies-patterns to choose the right test layers, tools, and CI checks for this web application."
