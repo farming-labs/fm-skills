@@ -1,216 +1,85 @@
 ---
 name: realtime-patterns
-description: Explains realtime web application patterns including polling, long polling, server-sent events, WebSockets, presence, fan-out, reconciliation, and connection lifecycle management. Use when choosing how clients should receive live updates, implementing collaborative or streaming interfaces, or balancing latency, scale, and reliability.
+description: [TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]
 ---
 
 # Realtime Patterns
 
 ## Overview
 
-Realtime features deliver updates after the initial page load without requiring manual refresh. The core design problem is choosing how fresh data must be, how many clients you need to update, and how much operational complexity the feature can justify.
+[TODO: 1-2 sentences explaining what this skill enables]
 
-## The Delivery Spectrum
+## Structuring This Skill
 
-| Pattern | Direction | Good For | Tradeoffs |
-|--------|-----------|----------|-----------|
-| Polling | Client -> server | Simple dashboards, low urgency data | Wasted requests, delayed freshness |
-| Long polling | Client -> server with held request | Moderate freshness without full socket infra | More complex than polling |
-| Server-Sent Events (SSE) | Server -> client | Feeds, notifications, streaming logs | One-way only |
-| WebSocket | Bi-directional | Chat, collaboration, multiplayer | Connection and scaling complexity |
+[TODO: Choose the structure that best fits this skill's purpose. Common patterns:
 
-Do not start with WebSockets by default. Start with the cheapest transport that meets the product requirement.
+**1. Workflow-Based** (best for sequential processes)
+- Works well when there are clear step-by-step procedures
+- Example: DOCX skill with "Workflow Decision Tree" -> "Reading" -> "Creating" -> "Editing"
+- Structure: ## Overview -> ## Workflow Decision Tree -> ## Step 1 -> ## Step 2...
 
-## Choosing a Transport
+**2. Task-Based** (best for tool collections)
+- Works well when the skill offers different operations/capabilities
+- Example: PDF skill with "Quick Start" -> "Merge PDFs" -> "Split PDFs" -> "Extract Text"
+- Structure: ## Overview -> ## Quick Start -> ## Task Category 1 -> ## Task Category 2...
 
-### Polling
+**3. Reference/Guidelines** (best for standards or specifications)
+- Works well for brand guidelines, coding standards, or requirements
+- Example: Brand styling with "Brand Guidelines" -> "Colors" -> "Typography" -> "Features"
+- Structure: ## Overview -> ## Guidelines -> ## Specifications -> ## Usage...
 
-Request the latest state every few seconds.
+**4. Capabilities-Based** (best for integrated systems)
+- Works well when the skill provides multiple interrelated features
+- Example: Product Management with "Core Capabilities" -> numbered capability list
+- Structure: ## Overview -> ## Core Capabilities -> ### 1. Feature -> ### 2. Feature...
 
-```javascript
-setInterval(async () => {
-  const next = await fetch('/api/notifications').then((r) => r.json());
-  render(next);
-}, 10000);
-```
+Patterns can be mixed and matched as needed. Most skills combine patterns (e.g., start with task-based, add workflow for complex operations).
 
-Use when:
-- Delay of a few seconds is acceptable
-- The dataset is cheap to fetch
-- Simplicity matters more than precision
+Delete this entire "Structuring This Skill" section when done - it's just guidance.]
 
-### Long Polling
+## [TODO: Replace with the first main section based on chosen structure]
 
-The client makes a request that the server holds until new data is available or a timeout occurs.
+[TODO: Add content here. See examples in existing skills:
+- Code samples for technical skills
+- Decision trees for complex workflows
+- Concrete examples with realistic user requests
+- References to scripts/templates/references as needed]
 
-Use when:
-- You need faster updates than polling
-- Your infrastructure does not favor persistent sockets
+## Resources (optional)
 
-### Server-Sent Events
+Create only the resource directories this skill actually needs. Delete this section if no resources are required.
 
-The server keeps a streaming HTTP response open and pushes events to the client.
+### scripts/
+Executable code (Python/Bash/etc.) that can be run directly to perform specific operations.
 
-```javascript
-const stream = new EventSource('/api/activity-stream');
-stream.onmessage = (event) => {
-  const message = JSON.parse(event.data);
-  applyUpdate(message);
-};
-```
+**Examples from other skills:**
+- PDF skill: `fill_fillable_fields.py`, `extract_form_field_info.py` - utilities for PDF manipulation
+- DOCX skill: `document.py`, `utilities.py` - Python modules for document processing
 
-Use when:
-- Updates only need to flow server -> client
-- You are streaming logs, notifications, metrics, or feed entries
-- Simpler infra than WebSockets is desirable
+**Appropriate for:** Python scripts, shell scripts, or any executable code that performs automation, data processing, or specific operations.
 
-### WebSockets
+**Note:** Scripts may be executed without loading into context, but can still be read by Codex for patching or environment adjustments.
 
-The client and server keep a persistent two-way connection.
+### references/
+Documentation and reference material intended to be loaded into context to inform Codex's process and thinking.
 
-```javascript
-const socket = new WebSocket('wss://example.com/room/123');
-socket.addEventListener('message', (event) => {
-  applyUpdate(JSON.parse(event.data));
-});
-socket.send(JSON.stringify({ type: 'chat:send', body: 'hello' }));
-```
+**Examples from other skills:**
+- Product management: `communication.md`, `context_building.md` - detailed workflow guides
+- BigQuery: API reference documentation and query examples
+- Finance: Schema documentation, company policies
 
-Use when:
-- Clients must both send and receive live events
-- Presence, cursor movement, chat, or collaboration need low latency
-- The system can support connection state and fan-out
+**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Codex should reference while working.
 
-## State Sync vs Event Stream
+### assets/
+Files not intended to be loaded into context, but rather used within the output Codex produces.
 
-Two broad models exist:
+**Examples from other skills:**
+- Brand styling: PowerPoint template files (.pptx), logo files
+- Frontend builder: HTML/React boilerplate project directories
+- Typography: Font files (.ttf, .woff2)
 
-### Snapshot Sync
+**Appropriate for:** Templates, boilerplate code, document templates, images, icons, fonts, or any files meant to be copied or used in the final output.
 
-Server sends the latest full state.
+---
 
-Good for:
-- Small documents
-- Simpler clients
-- Easier recovery after reconnect
-
-### Event Stream
-
-Server sends incremental changes like `message-added` or `task-moved`.
-
-Good for:
-- High-frequency updates
-- Larger shared state
-- Auditability of change sequence
-
-Tradeoff:
-- Clients must handle ordering, deduplication, and missed events
-
-## Connection Lifecycle
-
-Design for the fact that connections fail regularly.
-
-```text
-connect
--> authenticate
--> subscribe to channel or room
--> receive events
--> disconnect or timeout
--> reconnect
--> resync missed state
-```
-
-Requirements:
-- Heartbeats or keepalive where needed
-- Exponential backoff on reconnect
-- Clear "connecting" vs "live" vs "stale" UI states
-- A recovery path after missed messages
-
-## Presence Patterns
-
-Presence answers "who is here right now?" This is harder than it looks because disconnects are not always explicit.
-
-Use:
-- Join events when a client connects
-- Heartbeats or server-side expirations
-- Leave events as a hint, not the only truth source
-
-Presence is usually approximate. Product design should tolerate short periods of inaccuracy.
-
-## Realtime + Mutations
-
-If users can submit changes and also receive live updates, design reconciliation explicitly.
-
-```text
-User sends mutation
--> UI may optimistically update
--> server acknowledges authoritative result
--> live channel broadcasts canonical event
--> clients reconcile local optimistic state
-```
-
-Common rules:
-- Use stable IDs generated by server or deterministic temp IDs
-- Make events idempotent where possible
-- Ignore duplicates safely
-- Prefer server timestamps or sequence numbers over local clock ordering
-
-## Ordering and Deduplication
-
-Realtime bugs often come from assuming perfect ordering.
-
-Defend with:
-- Monotonic sequence numbers
-- Event IDs for deduplication
-- Version numbers on shared records
-- Periodic full resync for safety
-
-## Channel Design
-
-Model subscriptions intentionally:
-- Per-user channels for notifications
-- Per-resource channels for documents or rooms
-- Per-tenant channels for admin dashboards
-
-Do not broadcast everything to everyone and filter only in the client.
-
-## Security Considerations
-
-- Authenticate the connection, not just the initial page load.
-- Re-check authorization when joining rooms or subscribing to resources.
-- Expire or rotate credentials for long-lived connections.
-- Validate incoming client events like any other API input.
-- Rate limit message sends and connection attempts.
-
-## Scaling Considerations
-
-| Concern | Typical Strategy |
-|--------|------------------|
-| Many app instances | Shared pub/sub backbone |
-| Many rooms/channels | Partition subscriptions by tenant or resource |
-| Mobile or flaky networks | Resume tokens or snapshot resync |
-| High fan-out | Push only compact events, let clients fetch details if needed |
-
-At scale, the hard part is usually fan-out and reconnection behavior, not the socket API itself.
-
-## UX Guidance
-
-- Show stale or reconnecting states honestly.
-- Avoid flicker from frequent low-value updates.
-- Coalesce bursts when exact every-event rendering is unnecessary.
-- Combine realtime delivery with normal fetch paths so refresh and deep links still work.
-
-## Decision Matrix
-
-| Requirement | Recommended Starting Point |
-|------------|----------------------------|
-| Data can be 10-60 seconds old | Polling |
-| Server needs to push logs or notifications | SSE |
-| Chat or collaborative editing | WebSocket |
-| Presence or typing indicators | WebSocket |
-| Low-complexity dashboard with moderate freshness | Polling or long polling |
-
-## Related Skills
-
-- Read [data-fetching-patterns](../data-fetching-patterns/SKILL.md) for baseline request patterns.
-- Read [optimistic-ui-patterns](../optimistic-ui-patterns/SKILL.md) for reconciliation after local mutations.
-- Read [caching-invalidation-patterns](../caching-invalidation-patterns/SKILL.md) for keeping cached data coherent with live updates.
+**Not every skill requires all three types of resources.**

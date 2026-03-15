@@ -15,6 +15,7 @@ These skills help AI assistants understand:
 - Mutation UX patterns such as optimistic updates, rollback, and reconciliation
 - Cache invalidation, freshness windows, and revalidation strategies
 - Accessible interaction design including focus, keyboard flow, and announcements
+- Realtime delivery models such as polling, SSE, and WebSockets
 - How meta-frameworks solve common problems
 - Hydration, routing, and other core concepts
 
@@ -35,6 +36,7 @@ Rather than framework-specific instructions, these skills provide the **conceptu
 | [data-fetching-patterns](./data-fetching-patterns/SKILL.md) | Fetch patterns, caching, loading states |
 | [caching-invalidation-patterns](./caching-invalidation-patterns/SKILL.md) | Cache keys, stale data, revalidation, mutation invalidation |
 | [optimistic-ui-patterns](./optimistic-ui-patterns/SKILL.md) | Optimistic mutations, rollback, temp IDs, reconciliation |
+| [realtime-patterns](./realtime-patterns/SKILL.md) | Polling, SSE, WebSockets, presence, reconnection, reconciliation |
 | [build-pipelines-bundling](./build-pipelines-bundling/SKILL.md) | Bundling, code splitting, tree shaking, build optimization |
 | [universal-javascript-runtimes](./universal-javascript-runtimes/SKILL.md) | Nitro, H3, unenv, web standards, cross-platform deployment |
 | [middleware-patterns](./middleware-patterns/SKILL.md) | Server/edge middleware, request pipelines, auth, CORS, rate limiting |
@@ -67,13 +69,15 @@ For best understanding, read the skills in this order:
         ↓
 11. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
         ↓
-12. seo-fundamentals            (Search engine optimization)
+12. realtime-patterns           (Live delivery, sync, presence)
         ↓
-13. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
+13. seo-fundamentals            (Search engine optimization)
         ↓
-14. middleware-patterns         (Request/response pipelines, auth, CORS)
+14. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
         ↓
-15. meta-frameworks-overview    (How frameworks implement all of the above)
+15. middleware-patterns         (Request/response pipelines, auth, CORS)
+        ↓
+16. meta-frameworks-overview    (How frameworks implement all of the above)
 ```
 
 ## Installation
@@ -114,6 +118,7 @@ Once installed, Cursor will automatically suggest these skills when relevant top
 - Asking "Should I use SSR or SSG?" will trigger rendering-patterns
 - Asking "How do SPAs handle routing?" will trigger web-app-architectures and routing-patterns
 - Asking "How do I make this dropdown, modal, or form interaction accessible?" will trigger accessibility-interaction-patterns
+- Asking "Should this update use polling, SSE, or WebSockets?" will trigger realtime-patterns
 - Asking "How do I improve SEO for my React app?" will trigger seo-fundamentals
 - Asking "How should I invalidate cache after mutations or avoid stale query data?" will trigger caching-invalidation-patterns
 - Asking "How should I build optimistic updates for likes, comments, or reordering?" will trigger optimistic-ui-patterns
