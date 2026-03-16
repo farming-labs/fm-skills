@@ -12,6 +12,7 @@ These skills help AI assistants understand:
 - SEO implications of architectural decisions
 - Universal JavaScript and cross-platform deployment (Nitro, H3, edge runtimes)
 - Middleware patterns for request/response processing (auth, CORS, rate limiting)
+- Observability across logs, metrics, traces, error reporting, and alerts
 - Developer experience: HMR, dev servers, error overlays, and modern tooling
 - Mutation UX patterns such as optimistic updates, rollback, and reconciliation
 - Cache invalidation, freshness windows, and revalidation strategies
@@ -36,6 +37,7 @@ Rather than framework-specific instructions, these skills provide the **conceptu
 | [routing-patterns](./routing-patterns/SKILL.md) | Client vs server routing, file-based routing |
 | [accessibility-interaction-patterns](./accessibility-interaction-patterns/SKILL.md) | Keyboard access, focus management, ARIA, async feedback |
 | [testing-strategies-patterns](./testing-strategies-patterns/SKILL.md) | Unit, integration, E2E, accessibility, visual, and CI testing |
+| [observability-patterns](./observability-patterns/SKILL.md) | Logs, metrics, traces, client errors, SLOs, and alerts |
 | [state-management-patterns](./state-management-patterns/SKILL.md) | Client state, server state, URL state, caching |
 | [data-fetching-patterns](./data-fetching-patterns/SKILL.md) | Fetch patterns, caching, loading states |
 | [caching-invalidation-patterns](./caching-invalidation-patterns/SKILL.md) | Cache keys, stale data, revalidation, mutation invalidation |
@@ -69,23 +71,25 @@ For best understanding, read the skills in this order:
         ↓
 9. testing-strategies-patterns  (How to build confidence and quality gates)
         ↓
-10. data-fetching-patterns      (How to load data)
+10. observability-patterns      (Logs, metrics, traces, and production diagnosis)
         ↓
-11. caching-invalidation-patterns (Freshness, staleness, revalidation)
+11. data-fetching-patterns      (How to load data)
         ↓
-12. state-management-patterns   (Where to store data)
+12. caching-invalidation-patterns (Freshness, staleness, revalidation)
         ↓
-13. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
+13. state-management-patterns   (Where to store data)
         ↓
-14. realtime-patterns           (Live delivery, sync, presence)
+14. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
         ↓
-15. seo-fundamentals            (Search engine optimization)
+15. realtime-patterns           (Live delivery, sync, presence)
         ↓
-16. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
+16. seo-fundamentals            (Search engine optimization)
         ↓
-17. middleware-patterns         (Request/response pipelines, auth, CORS)
+17. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
         ↓
-18. meta-frameworks-overview    (How frameworks implement all of the above)
+18. middleware-patterns         (Request/response pipelines, auth, CORS)
+        ↓
+19. meta-frameworks-overview    (How frameworks implement all of the above)
 ```
 
 ## Installation
@@ -128,6 +132,7 @@ Once installed, Cursor will automatically suggest these skills when relevant top
 - Asking "How do SPAs handle routing?" will trigger web-app-architectures and routing-patterns
 - Asking "How do I make this dropdown, modal, or form interaction accessible?" will trigger accessibility-interaction-patterns
 - Asking "What should I test with Vitest, Playwright, or Testing Library?" will trigger testing-strategies-patterns
+- Asking "How should I instrument logs, metrics, traces, or alerts for this app?" will trigger observability-patterns
 - Asking "Should this update use polling, SSE, or WebSockets?" will trigger realtime-patterns
 - Asking "How do I improve SEO for my React app?" will trigger seo-fundamentals
 - Asking "How should I invalidate cache after mutations or avoid stale query data?" will trigger caching-invalidation-patterns
