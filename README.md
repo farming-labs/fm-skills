@@ -8,6 +8,7 @@ These skills help AI assistants understand:
 - How web applications are architected (SPA, MPA, hybrid)
 - Build pipelines, bundling, code splitting, and optimization
 - Different rendering strategies and when to use each
+- Performance optimization, Core Web Vitals, and budget-driven tradeoffs
 - SEO implications of architectural decisions
 - Universal JavaScript and cross-platform deployment (Nitro, H3, edge runtimes)
 - Middleware patterns for request/response processing (auth, CORS, rate limiting)
@@ -28,6 +29,7 @@ Rather than framework-specific instructions, these skills provide the **conceptu
 |-------|-------------|
 | [web-app-architectures](./web-app-architectures/SKILL.md) | SPA vs MPA fundamentals, hybrid architectures |
 | [rendering-patterns](./rendering-patterns/SKILL.md) | CSR, SSR, SSG, ISR, Streaming |
+| [performance-patterns](./performance-patterns/SKILL.md) | Core Web Vitals, bundle cost, rendering, hydration, caching |
 | [seo-fundamentals](./seo-fundamentals/SKILL.md) | SEO for web apps, Core Web Vitals, crawling |
 | [hydration-patterns](./hydration-patterns/SKILL.md) | Hydration, islands architecture, resumability |
 | [meta-frameworks-overview](./meta-frameworks-overview/SKILL.md) | Next.js, Nuxt, SvelteKit, Astro, Remix, Qwik |
@@ -59,29 +61,31 @@ For best understanding, read the skills in this order:
         ↓
 5. hydration-patterns           (How static becomes interactive)
         ↓
-6. routing-patterns             (How navigation works)
+6. performance-patterns         (LCP, INP, CLS, and critical-path tradeoffs)
         ↓
-7. accessibility-interaction-patterns (Keyboard, focus, announcements)
+7. routing-patterns             (How navigation works)
         ↓
-8. testing-strategies-patterns  (How to build confidence and quality gates)
+8. accessibility-interaction-patterns (Keyboard, focus, announcements)
         ↓
-9. data-fetching-patterns       (How to load data)
+9. testing-strategies-patterns  (How to build confidence and quality gates)
         ↓
-10. caching-invalidation-patterns (Freshness, staleness, revalidation)
+10. data-fetching-patterns      (How to load data)
         ↓
-11. state-management-patterns   (Where to store data)
+11. caching-invalidation-patterns (Freshness, staleness, revalidation)
         ↓
-12. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
+12. state-management-patterns   (Where to store data)
         ↓
-13. realtime-patterns           (Live delivery, sync, presence)
+13. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
         ↓
-14. seo-fundamentals            (Search engine optimization)
+14. realtime-patterns           (Live delivery, sync, presence)
         ↓
-15. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
+15. seo-fundamentals            (Search engine optimization)
         ↓
-16. middleware-patterns         (Request/response pipelines, auth, CORS)
+16. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
         ↓
-17. meta-frameworks-overview    (How frameworks implement all of the above)
+17. middleware-patterns         (Request/response pipelines, auth, CORS)
+        ↓
+18. meta-frameworks-overview    (How frameworks implement all of the above)
 ```
 
 ## Installation
@@ -120,6 +124,7 @@ cp -r fm-skills .cursor/skills/
 Once installed, Cursor will automatically suggest these skills when relevant topics are discussed. For example:
 
 - Asking "Should I use SSR or SSG?" will trigger rendering-patterns
+- Asking "How do I improve LCP, INP, or bundle performance?" will trigger performance-patterns
 - Asking "How do SPAs handle routing?" will trigger web-app-architectures and routing-patterns
 - Asking "How do I make this dropdown, modal, or form interaction accessible?" will trigger accessibility-interaction-patterns
 - Asking "What should I test with Vitest, Playwright, or Testing Library?" will trigger testing-strategies-patterns
