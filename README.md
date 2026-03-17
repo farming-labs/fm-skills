@@ -17,6 +17,7 @@ These skills help AI assistants understand:
 - Developer experience: HMR, dev servers, error overlays, and modern tooling
 - Mutation UX patterns such as optimistic updates, rollback, and reconciliation
 - Cache invalidation, freshness windows, and revalidation strategies
+- Browser persistence with cookies, localStorage, sessionStorage, and safe usage patterns
 - Accessible interaction design including focus, keyboard flow, and announcements
 - Testing strategy across unit, integration, E2E, accessibility, and performance layers
 - Realtime delivery models such as polling, SSE, and WebSockets
@@ -41,6 +42,7 @@ Rather than framework-specific instructions, these skills provide the **conceptu
 | [error-handling-patterns](./error-handling-patterns/SKILL.md) | Error boundaries, retries, user recovery, fallbacks, observability hooks |
 | [observability-patterns](./observability-patterns/SKILL.md) | Logs, metrics, traces, client errors, SLOs, and alerts |
 | [state-management-patterns](./state-management-patterns/SKILL.md) | Client state, server state, URL state, caching |
+| [browser-storage-patterns](./browser-storage-patterns/SKILL.md) | Cookies, localStorage, sessionStorage, SSR, security, and persistence |
 | [data-fetching-patterns](./data-fetching-patterns/SKILL.md) | Fetch patterns, caching, loading states |
 | [caching-invalidation-patterns](./caching-invalidation-patterns/SKILL.md) | Cache keys, stale data, revalidation, mutation invalidation |
 | [optimistic-ui-patterns](./optimistic-ui-patterns/SKILL.md) | Optimistic mutations, rollback, temp IDs, reconciliation |
@@ -83,17 +85,19 @@ For best understanding, read the skills in this order:
         ↓
 14. state-management-patterns   (Where to store data)
         ↓
-15. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
+15. browser-storage-patterns    (Cookies, localStorage, sessionStorage, SSR)
         ↓
-16. realtime-patterns           (Live delivery, sync, presence)
+16. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
         ↓
-17. seo-fundamentals            (Search engine optimization)
+17. realtime-patterns           (Live delivery, sync, presence)
         ↓
-18. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
+18. seo-fundamentals            (Search engine optimization)
         ↓
-19. middleware-patterns         (Request/response pipelines, auth, CORS)
+19. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
         ↓
-20. meta-frameworks-overview    (How frameworks implement all of the above)
+20. middleware-patterns         (Request/response pipelines, auth, CORS)
+        ↓
+21. meta-frameworks-overview    (How frameworks implement all of the above)
 ```
 
 ## Installation
@@ -138,6 +142,7 @@ Once installed, Cursor will automatically suggest these skills when relevant top
 - Asking "What should I test with Vitest, Playwright, or Testing Library?" will trigger testing-strategies-patterns
 - Asking "How should this app handle load failures, retries, or fallback UI?" will trigger error-handling-patterns
 - Asking "How should I instrument logs, metrics, traces, or alerts for this app?" will trigger observability-patterns
+- Asking "Should this go in cookies, localStorage, or sessionStorage?" will trigger browser-storage-patterns
 - Asking "Should this update use polling, SSE, or WebSockets?" will trigger realtime-patterns
 - Asking "How do I improve SEO for my React app?" will trigger seo-fundamentals
 - Asking "How should I invalidate cache after mutations or avoid stale query data?" will trigger caching-invalidation-patterns
