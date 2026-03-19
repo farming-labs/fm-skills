@@ -18,6 +18,7 @@ These skills help AI assistants understand:
 - Mutation UX patterns such as optimistic updates, rollback, and reconciliation
 - Cache invalidation, freshness windows, and revalidation strategies
 - Browser persistence with cookies, localStorage, sessionStorage, and safe usage patterns
+- Design systems including tokens, primitives, theming, documentation, and governance
 - Accessible interaction design including focus, keyboard flow, and announcements
 - Testing strategy across unit, integration, E2E, accessibility, and performance layers
 - Realtime delivery models such as polling, SSE, and WebSockets
@@ -38,6 +39,7 @@ Rather than framework-specific instructions, these skills provide the **conceptu
 | [meta-frameworks-overview](./meta-frameworks-overview/SKILL.md) | Next.js, Nuxt, SvelteKit, Astro, Remix, Qwik |
 | [routing-patterns](./routing-patterns/SKILL.md) | Client vs server routing, file-based routing |
 | [accessibility-interaction-patterns](./accessibility-interaction-patterns/SKILL.md) | Keyboard access, focus management, ARIA, async feedback |
+| [design-system-patterns](./design-system-patterns/SKILL.md) | Tokens, component APIs, theming, accessibility defaults, governance |
 | [testing-strategies-patterns](./testing-strategies-patterns/SKILL.md) | Unit, integration, E2E, accessibility, visual, and CI testing |
 | [error-handling-patterns](./error-handling-patterns/SKILL.md) | Error boundaries, retries, user recovery, fallbacks, observability hooks |
 | [observability-patterns](./observability-patterns/SKILL.md) | Logs, metrics, traces, client errors, SLOs, and alerts |
@@ -73,31 +75,33 @@ For best understanding, read the skills in this order:
         ↓
 8. accessibility-interaction-patterns (Keyboard, focus, announcements)
         ↓
-9. testing-strategies-patterns  (How to build confidence and quality gates)
+9. design-system-patterns       (Tokens, components, theming, and governance)
         ↓
-10. error-handling-patterns     (Retries, recovery UX, boundaries, and fallbacks)
+10. testing-strategies-patterns (How to build confidence and quality gates)
         ↓
-11. observability-patterns      (Logs, metrics, traces, and production diagnosis)
+11. error-handling-patterns     (Retries, recovery UX, boundaries, and fallbacks)
         ↓
-12. data-fetching-patterns      (How to load data)
+12. observability-patterns      (Logs, metrics, traces, and production diagnosis)
         ↓
-13. caching-invalidation-patterns (Freshness, staleness, revalidation)
+13. data-fetching-patterns      (How to load data)
         ↓
-14. state-management-patterns   (Where to store data)
+14. caching-invalidation-patterns (Freshness, staleness, revalidation)
         ↓
-15. browser-storage-patterns    (Cookies, localStorage, sessionStorage, SSR)
+15. state-management-patterns   (Where to store data)
         ↓
-16. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
+16. browser-storage-patterns    (Cookies, localStorage, sessionStorage, SSR)
         ↓
-17. realtime-patterns           (Live delivery, sync, presence)
+17. optimistic-ui-patterns      (Mutations, rollback, reconciliation)
         ↓
-18. seo-fundamentals            (Search engine optimization)
+18. realtime-patterns           (Live delivery, sync, presence)
         ↓
-19. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
+19. seo-fundamentals            (Search engine optimization)
         ↓
-20. middleware-patterns         (Request/response pipelines, auth, CORS)
+20. universal-javascript-runtimes (Deploy anywhere: edge, serverless, Node)
         ↓
-21. meta-frameworks-overview    (How frameworks implement all of the above)
+21. middleware-patterns         (Request/response pipelines, auth, CORS)
+        ↓
+22. meta-frameworks-overview    (How frameworks implement all of the above)
 ```
 
 ## Installation
@@ -139,6 +143,7 @@ Once installed, Cursor will automatically suggest these skills when relevant top
 - Asking "How do I improve LCP, INP, or bundle performance?" will trigger performance-patterns
 - Asking "How do SPAs handle routing?" will trigger web-app-architectures and routing-patterns
 - Asking "How do I make this dropdown, modal, or form interaction accessible?" will trigger accessibility-interaction-patterns
+- Asking "How should we structure tokens, primitives, variants, and shared components?" will trigger design-system-patterns
 - Asking "What should I test with Vitest, Playwright, or Testing Library?" will trigger testing-strategies-patterns
 - Asking "How should this app handle load failures, retries, or fallback UI?" will trigger error-handling-patterns
 - Asking "How should I instrument logs, metrics, traces, or alerts for this app?" will trigger observability-patterns
